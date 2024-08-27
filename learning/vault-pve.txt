@@ -1,0 +1,32 @@
+Install following https://developer.hashicorp.com/vault/install?product_intent=vault
+
+Disable https listener on /etc/vault.d/vault.hcl
+listener "tcp" {
+  address = "0.0.0.0:8200"
+  tls_disable = 1
+}
+disable_mlock = true
+
+Add on /etc/vauld.d/vault.env
+VAULT_API_ADDR=http://127.0.0.1:8200
+
+Browser: http://ip-server:8200
+initial root token: hvs.xxxxxxx
+key 1: xxxxxxxxxXXxx=
+
+
+```
+vault secrets enable -path=secret/ kv
+vault kv put secret/hello foo=world
+vault kv put secret/hello foo=world excited=yes
+
+Get:
+vault kv get secret/hello
+vault kv get -field=excited secret/hello
+
+vault kv get -format=json secret/hello
+vault kv get -format=json secret/hello | jq -r .data
+
+
+Delete:
+vault kv delete secret/hello
