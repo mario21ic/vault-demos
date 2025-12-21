@@ -1,14 +1,27 @@
 Install following https://developer.hashicorp.com/vault/install?product_intent=vault
 
+Single server no dev:
+
 Disable https listener on /etc/vault.d/vault.hcl
+```
+api_addr = "http://192.168.2.51:8200"
 listener "tcp" {
-  address = "0.0.0.0:8200"
+  address = "192.168.2.51:8200"
   tls_disable = 1
 }
 disable_mlock = true
+```
 
 Add on /etc/vauld.d/vault.env
-VAULT_API_ADDR=http://127.0.0.1:8200
+```
+VAULT_API_ADDR=http://192.168.2.51:8200
+```
+
+Init:
+```
+export VAULT_ADDR=http://192.168.2.51:8200
+vault operator init
+```
 
 Browser: http://ip-server:8200
 initial root token: hvs.xxxxx
