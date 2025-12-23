@@ -4,7 +4,7 @@
 # Full configuration options can be found at https://developer.hashicorp.com/vault/docs/configuration
 
 api_addr = "http://192.168.10.102:8200"
-cluster_addr = "http://192.168.10.101:8201"
+cluster_addr = "http://192.168.10.102:8201"
 log_level = "debug"
 #log_level = "trace"
 
